@@ -62,3 +62,13 @@ function menu() {
         }
     });
 }
+
+// create function to select which department to view
+function viewDepartment() {
+    let sql = `SELECT * FROM departments`;
+    db.query(sql, (error, result) => {
+        if (error) throw error;
+        console.log (result);
+        menu();
+    });
+}
