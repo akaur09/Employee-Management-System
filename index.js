@@ -125,3 +125,55 @@ function addDepartment(){
         });
     });
 }
+// create a function that adds a new role into roles table
+function addRole(){
+    // select a department
+    let allDepartments = [];
+    let sqlOne = `SELECT * FROM departments`;
+    db.query(sqlOne, (error, result) => {
+        if (error) throw error;
+
+        let i = 0;
+        while (result[i]) {
+            allDepartments.push(result[i].name);
+            i++;
+        }
+    });
+    // create an inquirer prompt to add role
+    inquirer.prompt([
+        {
+            name: "rolName",
+            message: "Please enter the title for the new role",
+            type: "input",
+        },
+        {
+            name: "rolSalary",
+            message: "Please enter the salary for this role",
+            type: "input",
+        },
+        {
+            name: "rolDepartment",
+            message: "Please choose what department this role belongs to: ",
+            type: "list",
+            choices: allDepartments,
+        },
+    ])
+    .then((answer) => {
+        let depart_id = 0;
+        for ( let x = 0; x < allDepartments.length; x++){
+            if (answer.reportsTo == allDepartments[x]) {
+                depart_id = x + 1;
+            }
+        }
+        // add function to insert into table
+        let sql = `
+        INSERT INTO roles (title, salary, department_id)
+        VALUES ('${answer.rolName}', '${answer.rolSalary}', ${depart_id});
+        `;
+        db.query(sql, (error, result) => {
+            if (error) throw error;
+            console.log (`\n ROLE ${answer.rolName} created with a salary of ${answer.rolSalary} \n`);
+            menu();
+        });
+    });
+}
