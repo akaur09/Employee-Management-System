@@ -1,0 +1,24 @@
+{
+  "name": "employee-management-system",
+  "version": "1.0.0",
+  "description": "## Description: Want to keep track of employees? Use this command-line application that can be used to keep track of departments, roles, and their employees in a business. This application has several functions that all th euser to update and add information.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akaur09/Employee-Management-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akaur09/Employee-Management-System/issues"
+  },
+  "homepage": "https://github.com/akaur09/Employee-Management-System#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "mysql": "^2.18.1"
+  }
+}
