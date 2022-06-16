@@ -177,7 +177,21 @@ function addRole() {
             });
         });
 }
-// 
+// create helper function to get  roles
+function getRoles(){
+    // create an empty array for roles
+    let allRoles = [];
+    let sqlOne = `SELECT * FROM roles`;
+    db.query(sqlOne, (error, result)=>{
+        if (error) throw error;
+        let i = 0;
+        while(result[i]){
+            allRoles.push(result[i].title);
+            i++;
+        }
+    });
+    return allRoles;
+}
 
 // create helper function to get employees
 function getEmployees(){
