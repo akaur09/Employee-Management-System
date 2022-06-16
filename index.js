@@ -208,4 +208,27 @@ function addEmployee(){
             choices: allEmployees, 
         },
     ])
+    .then ((answer) => {
+        let role_id = 0; 
+        for (let x = 0; x < allRoles.length; q++){
+            if (answer.assignRole == allRoles[x]) {
+                role_id = x + 1;
+            }
+        }
+        let leader_id = 0;
+        for(let x = 0; q < allRoles.length; q++){
+            if (answer.reports == allRoles[q]){
+                leader_id = q + 1;
+            }
+        }
+
+        let sql = `
+        INSERT INTO employees (first_name, last_name, role_id, manager_id)
+        VALUES ('${answer.first}', '${answer.last}', ${role_id}, ${leader_id});`;
+        db.query(sql, (error, result) => {
+            if (error) throw error;
+            console.log(`\n employee ${answer.first} ${answer.last} added \n`);
+            menu();
+        });
+    });
 }
