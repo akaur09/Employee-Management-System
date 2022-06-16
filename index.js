@@ -1,4 +1,5 @@
 // call on inquirer
+const e = require('express');
 const inquirer = require('inquirer');
 // require sql
 const mysql = require("mysql");
@@ -27,3 +28,37 @@ const db = mysql.createConnection(
         multipleStatements: true,
     }
 );
+
+// create a funciton to display the menu and make choices
+function menu() {
+    inquirer.prompt ([
+        {
+            name: "option",
+            type: "list",
+            message: "Choose an option: ",
+            choices: questions,
+        },
+    ])
+    .then ((data) => {
+        if (data.option == questions[0]){
+            viewDepartment();
+        } else if (data.option == questions[1]){
+            viewRoles();
+        } else if (data.option == questions[2]){
+            viewEmployees();
+        } else if (data.option == questions[3]){
+            viewDepartment();
+        } else if (data.option == questions[4]){
+            addRole();
+        } else if (data.option == questions[5]){
+            addEmployee();
+        } else if (data.option == questions [6]){
+            updateEmployee();
+        } else if (data.option == questions[7]){
+            byeBye();
+        } else {
+            console.log(data);
+            console.log (questions[0]);
+        }
+    });
+}
