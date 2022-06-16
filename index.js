@@ -177,6 +177,24 @@ function addRole() {
             });
         });
 }
+// 
+
+// create helper function to get employees
+function getEmployees(){
+    // create an empty array to store employees
+    let allEmployees = [];
+    let sqlTwo = `SELECT * FROM employees`;
+    db.query(sqlTwo, (error, result) => {
+        if (error) throw error;
+        let z = 0;
+        while (result[z]) {
+            let fullName = `${result[z].first_name} ${result[z].last_name}`;
+            allEmployees.push(fullName);
+            z++;
+        }
+    });
+    return allEmployees
+}
 //  create function to add an employee 
 function addEmployee() {
     // call on all roles helper function
