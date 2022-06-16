@@ -274,7 +274,15 @@ function updateEmployeeRole() {
             }
         }
         // add sql function 
-        
+        let sql = `
+        UPDATE employees
+        SET role_id = ${roleId}
+        WHERE id = ${employeeId};`;
+        db.query (sql, (error, result) => {
+            if (error) throw error;
+            console.log (`\n ${answer.whichEmployee}'s role has been updated to ${answer.whichRole} \n`);
+            menu();
+        })
     })
 }
 
