@@ -47,7 +47,7 @@ function menu() {
         } else if (data.option == questions[2]){
             viewEmployees();
         } else if (data.option == questions[3]){
-            viewDepartment();
+            addDepartment();
         } else if (data.option == questions[4]){
             addRole();
         } else if (data.option == questions[5]){
@@ -103,5 +103,25 @@ function viewEmployees() {
         if (error) throw error;
         console.table(result);
         menu();
+    });
+}
+// create a function to add a department
+function addDepartment(){
+    // use inquirer prompt to ask if user wants to add department
+    inquirer.prompt([
+        {
+            name: "departName",
+            message: "Please enter the name of the new department",
+            type: "input",
+        },
+    ])
+    .then((answer) => {
+        let sql =`INSERT INTO departments (name)
+        VALUES ('${answer.departName}');`;
+        db.query(sql, (error, result) => {
+            if (error) throw error;
+            console.log (`\n DEPARTMENT ${answer.departName} made successfully \n`);
+            menu();
+        });
     });
 }
