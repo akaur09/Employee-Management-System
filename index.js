@@ -12,4 +12,18 @@ const questions= [
     "ADD EMPLOYEE",
     "UPDATE ENPLOYEE",
     "DONE",
-]
+];
+
+// empty array
+var list = []; 
+
+// create a sql connection
+const db = mysql.createConnection(
+    {
+        host: "localhost",
+        user: "root",
+        password: "Ak_9586!",
+        database: "business",
+        multipleStatements: true,
+    }
+);
