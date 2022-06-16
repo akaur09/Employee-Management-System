@@ -285,4 +285,8 @@ function updateEmployeeRole() {
         })
     })
 }
-
+// create function to end session
+function byeBye() {
+    console.log (`okay bye`);
+    db.end();
+}
