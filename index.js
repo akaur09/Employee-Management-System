@@ -177,3 +177,35 @@ function addRole(){
         });
     });
 }
+//  create function to add an employee 
+function addEmployee(){
+    // call on all roles helper function
+    let allRoles = getRoles();
+    // call on helper function to get all employees
+    let allEmployees = getEmployees();
+    // use inquirer prompt to add employee
+    inquirer.prompt([
+        {
+            name: "firstName",
+            message: "Please enter employees first name: ",
+            type: "input", 
+        },
+        {
+            name: "lastName",
+            message: "Please enter employees last name: ",
+            type: "input", 
+        },
+        {
+            name: "assignRole",
+            message: "Please select the employees role: ",
+            type: "list",
+            choices: allRoles, 
+        },
+        {
+            name: "reports",
+            message: "Please choose who this employees works under: ",
+            type: "list",
+            choices: allEmployees, 
+        },
+    ])
+}
