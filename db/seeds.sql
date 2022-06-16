@@ -17,3 +17,12 @@ VALUES
     ("Regional Manager", 130000, 3),
     ("Human Resource representative", 100000, 4 ),
     ("Junior SalesPerson", 80000, 1 );
+
+-- add to employees
+INSERT INTO employees (first_name, last_name, role_id, manager_id)
+VALUES 
+    ("loki", "singh", 2, null),
+    ("sponge", "bob", 3, 1),
+    ("squid", "ward", 4, 3),
+    ("patrick", "star", 2, 5),
+    ("krusty","krabs", 5, 6);
