@@ -260,6 +260,21 @@ function updateEmployeeRole() {
             choices: allRoles,
         },
     ])
-    
+    .then ((answer) => {
+        let roleId = 0;
+        for (let x = 0; x < allRoles.length; x++){
+            if (answer.whichRole == allRoles[x]){
+                roleId = x +1;
+            }
+        }
+        let employeeId = 0;
+        for (let p = 0; p <allEmployees.length; p++){
+            if (answer.whichEmployee == allEmployees[p]) {
+                employeeId = p + 1;
+            }
+        }
+        // add sql function 
+        
+    })
 }
 
