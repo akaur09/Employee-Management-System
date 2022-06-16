@@ -68,7 +68,21 @@ function viewDepartment() {
     let sql = `SELECT * FROM departments`;
     db.query(sql, (error, result) => {
         if (error) throw error;
-        console.log (result);
+        console.table(result);
+        menu();
+    });
+}
+
+// create function to display roles
+function viewRoles() {
+    let sql = `SELECT rol.id, rol.title, depart.name AS department, rol.salary 
+    FROM roles AS rol
+    JOIN departments AS depart
+    ON rol.department_id = depart.id
+    ORDER by rol.id`;
+    db.query(sql, (error, result) => {
+        if (error) throw error;
+        console.table(result);
         menu();
     });
 }
